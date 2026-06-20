@@ -43,3 +43,59 @@ QUESTIONS = [
         "answer": "D"
     },
 ]
+
+def display_banner():
+    """Prints the game banner."""
+    print("\n" + "=" * 50)
+    print("        🎯  PYTHON QUIZ GAME")
+    print("=" * 50)
+    print("  Topics: OOP | Recursion | Python Basics")
+    print("=" * 50 + "\n")
+ 
+ 
+def display_question(number, total, question_data):
+    """Displays a single question with options."""
+
+    print(f"\n  Question {number}/{total}")
+
+
+    print(f"  {question_data['question']}\n")
+
+    for option in question_data["options"]:
+
+        print(f"    {option}")
+    print()
+ 
+ 
+def get_user_answer():
+    """Prompts user for a valid answer (A/B/C/D)."""
+    while True:                             
+        answer = input("  Your answer (A/B/C/D): ").strip().upper()
+        if answer in ["A", "B", "C", "D"]:
+            return answer
+        print("  Please enter A, B, C, or D")
+ 
+ 
+def show_result(is_correct, correct_answer):
+    """Prints feedback after each answer."""
+    if is_correct:
+        print("Correct!\n")
+    else:
+        print(f"  Wrong! Correct answer was: {correct_answer}\n")
+    time.sleep(0.8)
+ 
+ 
+def calculate_grade(score, total):
+    """Returns a letter grade based on score percentage."""
+    percent = (score / total) * 100
+    if percent == 100:
+        return "S", "Perfect score!"
+    elif percent >= 75:
+        return "A", "Excellent work!"
+    elif percent >= 50:
+        return "B", "Good job!"
+    elif percent >= 25:
+        return "C", "Keep practicing!"
+    else:
+        return "D", "Don't give up!"
+ 
